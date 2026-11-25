@@ -1,0 +1,19 @@
+{% extends 'catequesis/base.html' %}
+
+{% block contenido %}
+    <h1>{{ sacramento }}</h1>
+
+    <p><strong>Descripción:</strong> {{ sacramento.descripcion|default:"Sin descripción" }}</p>
+    <p><strong>Edad mínima:</strong> {{ sacramento.edad_minima }} años</p>
+
+    <h2>Cursos de este sacramento</h2>
+    <ul>
+        {% for curso in sacramento.cursos.all %}
+            <li><a href="{% url 'curso_detail' curso.pk %}">{{ curso.nombre }}</a></li>
+        {% empty %}
+            <li>Aún no hay cursos.</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'sacramento_list' %}">Volver al listado</a></p>
+{% endblock %}

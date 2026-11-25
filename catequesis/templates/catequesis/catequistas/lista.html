@@ -1,0 +1,24 @@
+{% extends 'catequesis/base.html' %}
+
+{% block contenido %}
+    <h1>Catequistas</h1>
+
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Activo</th>
+            <th>Acciones</th>
+        </tr>
+        {% for catequista in catequistas %}
+            <tr>
+                <td>{{ catequista }}</td>
+                <td>{{ catequista.telefono }}</td>
+                <td>{{ catequista.activo|yesno:"Sí,No" }}</td>
+                <td><a href="{% url 'catequista_detail' catequista.pk %}">Ver</a></td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="4">No hay catequistas registrados.</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}

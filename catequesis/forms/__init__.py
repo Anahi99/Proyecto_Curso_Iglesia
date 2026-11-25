@@ -1,1 +1,5 @@
+from catequesis.forms.sacramento_form import SacramentoForm
+from catequesis.forms.catequista_form import CatequistaForm
+from catequesis.forms.participante_form import ParticipanteForm
 from catequesis.forms.curso_form import CursoForm
+from catequesis.forms.inscripcion_form import InscripcionForm
