@@ -1,0 +1,22 @@
+{% extends 'catequesis/base.html' %}
+
+{% block contenido %}
+    <h1>Sacramentos</h1>
+
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Nombre</th>
+            <th>Edad mínima</th>
+            <th>Acciones</th>
+        </tr>
+        {% for sacramento in sacramentos %}
+            <tr>
+                <td>{{ sacramento }}</td>
+                <td>{{ sacramento.edad_minima }}</td>
+                <td><a href="{% url 'sacramento_detail' sacramento.pk %}">Ver</a></td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="3">No hay sacramentos registrados.</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}

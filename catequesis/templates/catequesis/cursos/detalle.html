@@ -3,7 +3,7 @@
 {% block contenido %}
     <h1>{{ curso.nombre }}</h1>
 
-    <p><strong>Sacramento:</strong> {{ curso.sacramento }}</p>
+    <p><strong>Sacramento:</strong><a href="{% url 'sacramento_detail' curso.sacramento.pk %}">{{ curso.sacramento }}</a></p>
     <p><strong>Fechas:</strong> {{ curso.fecha_inicio }} al {{ curso.fecha_fin }}</p>
     <p><strong>Cupo:</strong> {{ curso.cupo }}</p>
     <p><strong>Costo:</strong> ${{ curso.costo }}</p>

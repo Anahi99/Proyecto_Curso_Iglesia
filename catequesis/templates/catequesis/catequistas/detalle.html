@@ -1,0 +1,20 @@
+{% extends 'catequesis/base.html' %}
+
+{% block contenido %}
+    <h1>{{ catequista }}</h1>
+
+    <p><strong>Teléfono:</strong> {{ catequista.telefono|default:"No registrado" }}</p>
+    <p><strong>Correo:</strong> {{ catequista.correo|default:"No registrado" }}</p>
+    <p><strong>Activo:</strong> {{ catequista.activo|yesno:"Sí,No" }}</p>
+
+    <h2>Cursos a su cargo</h2>
+    <ul>
+        {% for curso in catequista.cursos.all %}
+            <li><a href="{% url 'curso_detail' curso.pk %}">{{ curso.nombre }}</a></li>
+        {% empty %}
+            <li>No tiene cursos asignados.</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'catequista_list' %}">Volver al listado</a></p>
+{% endblock %}

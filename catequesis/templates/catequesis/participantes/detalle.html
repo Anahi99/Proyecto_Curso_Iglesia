@@ -1,0 +1,24 @@
+{% extends 'catequesis/base.html' %}
+
+{% block contenido %}
+    <h1>{{ participante }}</h1>
+
+    <p><strong>Cédula:</strong> {{ participante.cedula }}</p>
+    <p><strong>Fecha de nacimiento:</strong> {{ participante.fecha_nacimiento }}</p>
+    <p><strong>Teléfono:</strong> {{ participante.telefono|default:"No registrado" }}</p>
+    <p><strong>Representante:</strong> {{ participante.representante|default:"No registrado" }}</p>
+
+    <h2>Inscripciones</h2>
+    <ul>
+        {% for inscripcion in participante.inscripciones.all %}
+            <li>
+                <a href="{% url 'inscripcion_detail' inscripcion.pk %}">{{ inscripcion.curso }}</a>
+                ({{ inscripcion.get_estado_display }})
+            </li>
+        {% empty %}
+            <li>No tiene inscripciones.</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'participante_list' %}">Volver al listado</a></p>
+{% endblock %}

@@ -3,7 +3,9 @@
 {% block contenido %}
     <h1>Inscripción</h1>
 
-    <p><strong>Participante:</strong> {{ inscripcion.participante }}</p>
+    <p><strong>Participante:</strong>
+        <a href="{% url 'participante_detail' inscripcion.participante.pk %}">{{ inscripcion.participante }}</a>
+    </p>
     <p><strong>Curso:</strong>
         <a href="{% url 'curso_detail' inscripcion.curso.pk %}">{{ inscripcion.curso }}</a>
     </p>
