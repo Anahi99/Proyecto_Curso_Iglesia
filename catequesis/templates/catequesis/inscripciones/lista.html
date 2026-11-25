@@ -22,11 +22,11 @@
                 <td>{{ inscripcion.fecha_inscripcion }}</td>
                 <td>{{ inscripcion.get_estado_display }}</td>
                 <td>
-                    <a href="{% url 'inscripcion_detail' inscripcion.pk %}">Ver</a>
-                    {% if perms.catequesis.change_inscripcion %}
-                        <a href="{% url 'inscripcion_edit' inscripcion.pk %}">Editar</a>
+                        <a href="{% url 'inscripcion_detail' inscripcion.pk %}">Ver</a>
+                    {% if perms.catequesis.change_inscripcion and inscripcion.puede_modificar %}
+                         <a href="{% url 'inscripcion_edit' inscripcion.pk %}">Editar</a>
                     {% endif %}
-                    {% if perms.catequesis.delete_inscripcion %}
+                    {% if perms.catequesis.delete_inscripcion and inscripcion.puede_modificar %}
                         <a href="{% url 'inscripcion_delete' inscripcion.pk %}">Eliminar</a>
                     {% endif %}
                 </td>

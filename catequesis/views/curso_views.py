@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from catequesis.forms.curso_form import CursoForm
@@ -17,6 +17,7 @@ def curso_detail(request, pk):
 
 
 @login_required
+@permission_required('catequesis.add_curso', raise_exception=True)
 def curso_create(request):
     if request.method == 'POST':
         form = CursoForm(request.POST)
@@ -34,6 +35,7 @@ def curso_create(request):
 
 
 @login_required
+@permission_required('catequesis.change_curso', raise_exception=True)
 def curso_edit(request, pk):
     curso = get_object_or_404(Curso, pk=pk)
     if request.method == 'POST':
@@ -49,6 +51,7 @@ def curso_edit(request, pk):
 
 
 @login_required
+@permission_required('catequesis.delete_curso', raise_exception=True)
 def curso_delete(request, pk):
     curso = get_object_or_404(Curso, pk=pk)
     if request.method == 'POST':

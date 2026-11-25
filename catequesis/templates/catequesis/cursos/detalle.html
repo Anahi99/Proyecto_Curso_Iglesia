@@ -3,7 +3,9 @@
 {% block contenido %}
     <h1>{{ curso.nombre }}</h1>
 
-    <p><strong>Sacramento:</strong><a href="{% url 'sacramento_detail' curso.sacramento.pk %}">{{ curso.sacramento }}</a></p>
+    <p><strong>Sacramento:</strong>
+        <a href="{% url 'sacramento_detail' curso.sacramento.pk %}">{{ curso.sacramento }}</a>
+    </p>
     <p><strong>Fechas:</strong> {{ curso.fecha_inicio }} al {{ curso.fecha_fin }}</p>
     <p><strong>Cupo:</strong> {{ curso.cupo }}</p>
     <p><strong>Costo:</strong> ${{ curso.costo }}</p>
@@ -13,18 +15,17 @@
     <h2>Catequistas</h2>
     <ul>
         {% for catequista in curso.catequistas.all %}
-            <li>{{ catequista }}</li>
-        {% empty %}
-            <li>Sin catequistas asignados.</li>
+          <li><a href="{% url 'catequista_detail' catequista.pk %}">{{ catequista }}</a></li>
         {% endfor %}
-    </ul>
+        </ul>
 
     <h2>Inscritos</h2>
     <ul>
         {% for inscripcion in curso.inscripciones.all %}
            <li>
-                <a href="{% url 'inscripcion_detail' inscripcion.pk %}">{{ inscripcion.participante }}</a>
+                <a href="{% url 'participante_detail' inscripcion.participante.pk %}">{{ inscripcion.participante }}</a>
                 ({{ inscripcion.get_estado_display }})
+                - <a href="{% url 'inscripcion_detail' inscripcion.pk %}">ver inscripción</a>
             </li>
         {% endfor %}
     </ul>
