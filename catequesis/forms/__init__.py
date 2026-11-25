@@ -1,0 +1,1 @@
+from catequesis.forms.curso_form import CursoForm
