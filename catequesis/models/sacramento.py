@@ -5,9 +5,11 @@ from django.urls import reverse
 class Sacramento(models.Model):
     class Tipo(models.TextChoices):
         BAUTISMO = 'BA', 'Bautismo'
+        RECONCILIACION = 'RE', 'Reconciliación'
         PRIMERA_COMUNION = 'PC', 'Primera Comunión'
         CONFIRMACION = 'CO', 'Confirmación'
         MATRIMONIO = 'MA', 'Matrimonio'
+        UNCION = 'UN', 'Unción de los Enfermos'
 
     nombre = models.CharField(max_length=2, choices=Tipo.choices, unique=True)
     descripcion = models.TextField(blank=True)
