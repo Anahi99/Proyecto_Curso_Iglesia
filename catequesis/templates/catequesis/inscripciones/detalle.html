@@ -16,10 +16,10 @@
 
     <p>
         <a href="{% url 'inscripcion_list' %}">Volver al listado</a>
-        {% if perms.catequesis.change_inscripcion %}
+        {% if perms.catequesis.change_inscripcion and puede_modificar %}
             <a href="{% url 'inscripcion_edit' inscripcion.pk %}">Editar</a>
         {% endif %}
-        {% if perms.catequesis.delete_inscripcion %}
+        {% if perms.catequesis.delete_inscripcion and puede_modificar %}
             <a href="{% url 'inscripcion_delete' inscripcion.pk %}">Eliminar</a>
         {% endif %}
     </p>

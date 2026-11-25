@@ -1,4 +1,5 @@
 from catequesis.views.home_views import home
+from catequesis.views.auth_views import registro, login_view, logout_view
 from catequesis.views.sacramento_views import sacramento_list, sacramento_detail
 from catequesis.views.catequista_views import catequista_list, catequista_detail
 from catequesis.views.participante_views import participante_list, participante_detail

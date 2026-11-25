@@ -12,6 +12,17 @@
         <a href="{% url 'participante_list' %}">Participantes</a>
         <a href="{% url 'curso_list' %}">Cursos</a>
         <a href="{% url 'inscripcion_list' %}">Inscripciones</a>
+
+        {% if user.is_authenticated %}
+        |   Usuario: <strong>{{ user.username }}</strong>
+            <form method="post" action="{% url 'logout' %}" style="display:inline">
+                {% csrf_token %}
+                <button type="submit">Salir</button>
+            </form>
+        {% else %}
+        |   <a href="{% url 'login' %}">Entrar</a>
+            <a href="{% url 'registro' %}">Registrarse</a>
+        {% endif %}
     </nav>
     <hr>
 
