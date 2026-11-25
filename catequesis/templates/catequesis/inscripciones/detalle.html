@@ -1,0 +1,24 @@
+{% extends 'catequesis/base.html' %}
+
+{% block contenido %}
+    <h1>Inscripción</h1>
+
+    <p><strong>Participante:</strong> {{ inscripcion.participante }}</p>
+    <p><strong>Curso:</strong>
+        <a href="{% url 'curso_detail' inscripcion.curso.pk %}">{{ inscripcion.curso }}</a>
+    </p>
+    <p><strong>Fecha de inscripción:</strong> {{ inscripcion.fecha_inscripcion }}</p>
+    <p><strong>Estado:</strong> {{ inscripcion.get_estado_display }}</p>
+    <p><strong>Observaciones:</strong> {{ inscripcion.observaciones|default:"Ninguna" }}</p>
+    <p><strong>Registrada por:</strong> {{ inscripcion.creado_por.username }}</p>
+
+    <p>
+        <a href="{% url 'inscripcion_list' %}">Volver al listado</a>
+        {% if perms.catequesis.change_inscripcion %}
+            <a href="{% url 'inscripcion_edit' inscripcion.pk %}">Editar</a>
+        {% endif %}
+        {% if perms.catequesis.delete_inscripcion %}
+            <a href="{% url 'inscripcion_delete' inscripcion.pk %}">Eliminar</a>
+        {% endif %}
+    </p>
+{% endblock %}

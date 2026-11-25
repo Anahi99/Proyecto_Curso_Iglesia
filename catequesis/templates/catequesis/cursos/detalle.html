@@ -22,9 +22,10 @@
     <h2>Inscritos</h2>
     <ul>
         {% for inscripcion in curso.inscripciones.all %}
-            <li>{{ inscripcion.participante }} ({{ inscripcion.get_estado_display }})</li>
-        {% empty %}
-            <li>Aún no hay inscritos.</li>
+           <li>
+                <a href="{% url 'inscripcion_detail' inscripcion.pk %}">{{ inscripcion.participante }}</a>
+                ({{ inscripcion.get_estado_display }})
+            </li>
         {% endfor %}
     </ul>
 

@@ -1,0 +1,38 @@
+{% extends 'catequesis/base.html' %}
+
+{% block contenido %}
+    <h1>Inscripciones</h1>
+
+    {% if perms.catequesis.add_inscripcion %}
+        <p><a href="{% url 'inscripcion_create' %}">Nueva inscripción</a></p>
+    {% endif %}
+
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Participante</th>
+            <th>Curso</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        {% for inscripcion in inscripciones %}
+            <tr>
+                <td>{{ inscripcion.participante }}</td>
+                <td>{{ inscripcion.curso }}</td>
+                <td>{{ inscripcion.fecha_inscripcion }}</td>
+                <td>{{ inscripcion.get_estado_display }}</td>
+                <td>
+                    <a href="{% url 'inscripcion_detail' inscripcion.pk %}">Ver</a>
+                    {% if perms.catequesis.change_inscripcion %}
+                        <a href="{% url 'inscripcion_edit' inscripcion.pk %}">Editar</a>
+                    {% endif %}
+                    {% if perms.catequesis.delete_inscripcion %}
+                        <a href="{% url 'inscripcion_delete' inscripcion.pk %}">Eliminar</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="5">No hay inscripciones registradas.</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}
