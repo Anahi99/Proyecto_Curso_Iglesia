@@ -1,39 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block titulo %}Curso de Sacramentos{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'catequesis/css/estilos.css' %}">
 </head>
 <body>
-    <nav>
-        <a href="{% url 'home' %}">Inicio</a>
-        <a href="{% url 'sacramento_list' %}">Sacramentos</a>
-        <a href="{% url 'catequista_list' %}">Catequistas</a>
-        <a href="{% url 'participante_list' %}">Participantes</a>
-        <a href="{% url 'curso_list' %}">Cursos</a>
-        <a href="{% url 'inscripcion_list' %}">Inscripciones</a>
+    <header class="cabecera">
+        <span class="marca">Control del Curso de Sacramentos</span>
+        <nav class="menu">
+            <a href="{% url 'home' %}">Inicio</a>
+            <a href="{% url 'sacramento_list' %}">Sacramentos</a>
+            <a href="{% url 'catequista_list' %}">Catequistas</a>
+            <a href="{% url 'participante_list' %}">Participantes</a>
+            <a href="{% url 'curso_list' %}">Cursos</a>
+            <a href="{% url 'inscripcion_list' %}">Inscripciones</a>
 
-        {% if user.is_authenticated %}
-        |   Usuario: <strong>{{ user.username }}</strong>
-            <form method="post" action="{% url 'logout' %}" style="display:inline">
-                {% csrf_token %}
-                <button type="submit">Salir</button>
-            </form>
-        {% else %}
-        |   <a href="{% url 'login' %}">Entrar</a>
-            <a href="{% url 'registro' %}">Registrarse</a>
+            <div class="sesion">
+                {% if user.is_authenticated %}
+                    <span>Usuario: <strong>{{ user.username }}</strong></span>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Salir</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}">Entrar</a>
+                    <a href="{% url 'registro' %}">Registrarse</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        {% if messages %}
+            <ul class="mensajes">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
         {% endif %}
-    </nav>
-    <hr>
 
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    {% block contenido %}{% endblock %}
+        {% block contenido %}{% endblock %}
+    </main>
 </body>
 </html>

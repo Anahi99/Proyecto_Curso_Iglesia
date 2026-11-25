@@ -1,0 +1,274 @@
+:root {
+    --vino: #6b1e2e;
+    --vino-oscuro: #4a1420;
+    --crema: #faf6ef;
+    --dorado: #b8893b;
+    --texto: #2b2b2b;
+    --borde: #e0d6c6;
+    --exito: #2e7d4f;
+    --error: #b3261e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--crema);
+    color: var(--texto);
+    line-height: 1.5;
+}
+
+/* ---------- Cabecera y menú ---------- */
+.cabecera {
+    background: var(--vino);
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-bottom: 4px solid var(--dorado);
+}
+
+.marca {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 1rem;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.menu a:hover {
+    background: var(--vino-oscuro);
+}
+
+.sesion {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.sesion form {
+    display: inline;
+}
+
+.sesion button {
+    background: var(--dorado);
+    color: #fff;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sesion button:hover {
+    background: #9b722f;
+}
+
+/* ---------- Contenido ---------- */
+.contenedor {
+    max-width: 1000px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+
+h1 {
+    color: var(--vino);
+    border-bottom: 2px solid var(--dorado);
+    padding-bottom: 0.3rem;
+}
+
+h2 {
+    color: var(--vino-oscuro);
+    margin-top: 1.8rem;
+}
+
+a {
+    color: var(--vino);
+}
+
+hr {
+    display: none;
+}
+
+/* ---------- Mensajes ---------- */
+.mensajes {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+}
+
+.mensajes li {
+    padding: 0.7rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    background: #fff;
+    border-left: 5px solid var(--dorado);
+}
+
+.mensajes li.success {
+    border-left-color: var(--exito);
+    background: #eaf5ee;
+}
+
+.mensajes li.error {
+    border-left-color: var(--error);
+    background: #fbeceb;
+}
+
+/* ---------- Tablas ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+table, th, td {
+    border: 1px solid var(--borde);
+}
+
+th {
+    background: var(--vino);
+    color: #fff;
+    text-align: left;
+}
+
+th, td {
+    padding: 0.6rem 0.8rem;
+}
+
+tr:nth-child(even) td {
+    background: #fdfaf5;
+}
+
+/* ---------- Botones-enlace (sin tocar las plantillas) ---------- */
+a[href$="/nuevo/"],
+a[href$="/nueva/"] {
+    display: inline-block;
+    background: var(--vino);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 4px;
+}
+
+a[href$="/nuevo/"]:hover,
+a[href$="/nueva/"]:hover {
+    background: var(--vino-oscuro);
+}
+
+a[href$="/editar/"] {
+    color: var(--dorado);
+    font-weight: bold;
+}
+
+a[href$="/eliminar/"] {
+    color: var(--error);
+    font-weight: bold;
+}
+
+td a {
+    margin-right: 0.6rem;
+}
+
+/* ---------- Formularios ---------- */
+main form {
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 1.2rem 1.5rem;
+    max-width: 560px;
+}
+
+main form p {
+    margin: 0 0 1rem;
+}
+
+main form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+main form input[type="text"],
+main form input[type="email"],
+main form input[type="password"],
+main form input[type="number"],
+main form input[type="date"],
+main form select,
+main form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--borde);
+    border-radius: 4px;
+    font: inherit;
+}
+
+main form input:focus,
+main form select:focus,
+main form textarea:focus {
+    outline: 2px solid var(--dorado);
+}
+
+main form input[type="checkbox"] {
+    width: auto;
+}
+
+main form button {
+    background: var(--vino);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font: inherit;
+}
+
+main form button:hover {
+    background: var(--vino-oscuro);
+}
+
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.3rem;
+    color: var(--error);
+    font-size: 0.9rem;
+}
+
+.helptext {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.helptext ul {
+    margin: 0.3rem 0 0;
+    padding-left: 1.2rem;
+}
+
+/* ---------- Pantallas pequeñas ---------- */
+@media (max-width: 700px) {
+    .sesion {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
