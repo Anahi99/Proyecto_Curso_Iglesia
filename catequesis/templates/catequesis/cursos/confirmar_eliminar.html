@@ -1,0 +1,13 @@
+{% extends 'catequesis/base.html' %}
+
+{% block contenido %}
+    <h1>Eliminar curso</h1>
+    <p>¿Seguro que desea eliminar el curso "{{ curso.nombre }}"?</p>
+    <p>También se eliminarán sus inscripciones.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sí, eliminar</button>
+        <a href="{% url 'curso_detail' curso.pk %}">Cancelar</a>
+    </form>
+{% endblock %}
