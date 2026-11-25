@@ -1,0 +1,1 @@
+from catequesis.views.home_views import home
